@@ -7,7 +7,10 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
+      // ln 12 plays whichever one is clicked
       this.model.play();
+
+      // clicked should play only if there are no more songs in the queue
       this.model.enqueue();
     }
   },

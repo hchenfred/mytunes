@@ -10,6 +10,7 @@ var PlayerView = Backbone.View.extend({
     // we are binding that model to the pointer context
     var context = this;
     this.$el.on('ended', function() {
+      // event listens change THIS inside of their callback functions to the event
       context.model.ended();
     });
     // binding this as the third parameter to the event listener does not work
