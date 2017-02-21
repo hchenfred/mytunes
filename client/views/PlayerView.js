@@ -6,7 +6,14 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
-    console.log(this);
+    // this refers to the song outside of the event listener
+    // we are binding that model to the pointer context
+    var context = this;
+    this.$el.on('ended', function() {
+      context.model.ended();
+    });
+    // binding this as the third parameter to the event listener does not work
+      // this inside the event listener changes
   },
 
 
@@ -14,7 +21,6 @@ var PlayerView = Backbone.View.extend({
   setSong: function(song) {
     this.model = song;
     this.render();
-    // console.log(this.model.get('title'));
   },
 
   render: function() {
