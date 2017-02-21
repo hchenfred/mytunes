@@ -15,7 +15,6 @@ var AppModel = Backbone.Model.extend({
     // event listens on params.library change this inside to the library collection
     params.library.on('play', function(song) {
       // this lets you auto play (renders the audio src)...so default the song to the first of queue
-      console.log(song.get('title'));
       this.set('currentSong', song);
     }, this);
 
